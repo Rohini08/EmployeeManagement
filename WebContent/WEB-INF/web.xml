@@ -2,6 +2,7 @@
 <!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app id="WebApp_ID">
 	<display-name>EmployeeManagement</display-name>
+	
 	<servlet>
 		<servlet-name>LoginServlet1</servlet-name>
 		<display-name>LoginServlet1</display-name>
@@ -14,6 +15,19 @@
 		<description></description>
 		<servlet-class>com.cognizant.employeemanagement.controller.RegistrationServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>Logout</servlet-name>
+		<display-name>Logout</display-name>
+		<description></description>
+		<servlet-class>com.cognizant.employeemanagement.controller.Logout</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<display-name>LogoutServlet</display-name>
+		<description></description>
+		<servlet-class>com.cognizant.employeemanagement.controller.LogoutServlet</servlet-class>
+	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>LoginServlet1</servlet-name>
 		<url-pattern>/LoginServlet1</url-pattern>
@@ -22,9 +36,23 @@
 		<servlet-name>RegistrationServlet</servlet-name>
 		<url-pattern>/RegistrationServlet</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Logout</servlet-name>
+		<url-pattern>/Logout</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/LogoutServlet</url-pattern>
+	</servlet-mapping>
+	<session-config>
+	<session-timeout>30
+	</session-timeout>
+	</session-config>
+	
 	<welcome-file-list>
 		<welcome-file>Login.html</welcome-file>
 		
 		
 	</welcome-file-list>
+	
 </web-app>

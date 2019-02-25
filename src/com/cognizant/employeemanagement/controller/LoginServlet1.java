@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.cognizant.employeemanagement.service.LoginService;
 import com.cognizant.employeemanagement.service.LoginServiceImpl;
@@ -52,18 +53,21 @@ public class LoginServlet1 extends HttpServlet {
 				{
 					if(userStatus==0)
 					{
-						requestDispatcher=request.getRequestDispatcher("AdminHome.html");
+						HttpSession session=request.getSession();
+						session.setAttribute("userId",userName);
+						
+						requestDispatcher=request.getRequestDispatcher("AdminHome.jsp");
 						requestDispatcher.forward(request,response);
 					}
 					else if(userStatus==1)
 					{
 						
-						requestDispatcher=request.getRequestDispatcher("AlreadyLoggedIn.html");
+						requestDispatcher=request.getRequestDispatcher("AlreadyLoggedIn.jsp");
 						requestDispatcher.forward(request,response);
 					}
 					else if(userStatus==2)
 					{
-						requestDispatcher=request.getRequestDispatcher("UserDeactivated.html");
+						requestDispatcher=request.getRequestDispatcher("UserDeactivated.jsp");
 						requestDispatcher.forward(request,response);
 					}
 				}
@@ -71,18 +75,20 @@ public class LoginServlet1 extends HttpServlet {
 				{
 					if(userStatus==0)
 					{
-						requestDispatcher=request.getRequestDispatcher("UserHome.html");
+						HttpSession session=request.getSession();
+						session.setAttribute("userId",userName);
+						requestDispatcher=request.getRequestDispatcher("UserHome.jsp");
 						requestDispatcher.forward(request,response);
 					}
 					else if(userStatus==1)
 					{
 						
-						requestDispatcher=request.getRequestDispatcher("AlreadyLoggedIn.html");
+						requestDispatcher=request.getRequestDispatcher("AlreadyLoggedIn.jsp");
 						requestDispatcher.forward(request,response);
 					}
 					else if(userStatus==2)
 					{
-						requestDispatcher=request.getRequestDispatcher("UserDeactivated.html");
+						requestDispatcher=request.getRequestDispatcher("UserDeactivated.jsp");
 						requestDispatcher.forward(request,response);
 					}
 					
@@ -91,18 +97,20 @@ public class LoginServlet1 extends HttpServlet {
 				{
 					if(userStatus==0)
 					{
-						requestDispatcher=request.getRequestDispatcher("VendorHome.html");
+						HttpSession session=request.getSession();
+						session.setAttribute("userId",userName);
+						requestDispatcher=request.getRequestDispatcher("VendorHome.jsp");
 						requestDispatcher.forward(request,response);
 					}
 					
 					else if(userStatus==1)
 					{
-						requestDispatcher=request.getRequestDispatcher("AlreadyLoggedIn.html");
+						requestDispatcher=request.getRequestDispatcher("AlreadyLoggedIn.jsp");
 						requestDispatcher.forward(request,response);
 					}
 					else if(userStatus==2)
 					{
-						requestDispatcher=request.getRequestDispatcher("UserDeactivated.html");
+						requestDispatcher=request.getRequestDispatcher("UserDeactivated.jsp");
 						requestDispatcher.forward(request,response);
 					}
 				}
@@ -110,7 +118,7 @@ public class LoginServlet1 extends HttpServlet {
 		 else
 		 {
 			 //redirect to login
-			 requestDispatcher=request.getRequestDispatcher("Login.html");
+			 requestDispatcher=request.getRequestDispatcher("Login.jsp");
 				requestDispatcher.forward(request,response);
 			 
 		 }
